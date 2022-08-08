@@ -10,6 +10,14 @@
     <center>
         <form action="actions/smartcardsignup.act.php" method="post">
             <input type="text" placeholder="Create a username for your account" name="username" value="<?php echo $_GET['u']; ?>" required><br><br>
+            <div style="margin: 0; padding: 0; text-align: center; font-size: 12px;">
+                <?php
+                    if (isset($_GET['error1'])) {
+                        echo '<i style="color: red;">Username arleady exist!! Try again</i>';
+                        echo "<br><br>";
+                    }
+                ?>
+            </div>
             <input type="password" placeholder="Create login password" name="psw" required><br><br>
             <input type="password" placeholder="Confirm password" name="cpsw" required><br><br>
             <div style="color: red; margin: 0; padding: 0; text-align: center; font-size: 12px;">

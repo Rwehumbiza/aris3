@@ -5,6 +5,13 @@
         $psw = $_POST['psw'];
         $cpsw = $_POST['cpsw'];
 
+        $sql = "SELECT username FROM Smartcard WHERE username = '" . $username . "'";
+        $result = mysqli_query($conn, $sql);
+        $count = mysqli_num_rows($result);
+        if($count > 0){
+            header('location: ../smartcardsignup.php?error1');
+            exit();
+        }
         if ($cpsw !== $psw) {
             header("location: ../smartcardsignup.php?error&u=$username");
             exit();
