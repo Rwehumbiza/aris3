@@ -2,8 +2,12 @@
     include "database.act.php";
     if (isset($_POST['submit'])) {
         $username = $_POST['username'];
-        $psw = $_POST['psw'];
+        $psw = mysqli_real_escape_string($conn, stripcslashes($_POST['psw']));
         $cpsw = $_POST['cpsw'];
+
+        $username = stripcslashes($username);
+
+        $username = mysqli_real_escape_string($conn, $username);
 
         $sql = "SELECT username FROM Smartcard WHERE username = '" . $username . "'";
         $result = mysqli_query($conn, $sql);
@@ -16,7 +20,7 @@
             header("location: ../smartcardsignup.php?error&u=$username");
             exit();
         } else {
-            $sql = "INSERT INTO Smartcard VALUES ('$username', '$psw')";
+            $sql = "INSERT INTO Smartcard VALUES ('$username', '". password_hash($psw, PASSWORD_DEFAULT) ."')";
             if (mysqli_query($conn, $sql)) {
                 header("location: ../smartcardlogin.php?success");
             } else {

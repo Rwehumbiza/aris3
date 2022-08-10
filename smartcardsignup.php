@@ -18,7 +18,7 @@
                     }
                 ?>
             </div>
-            <input type="password" placeholder="Create login password" name="psw" required><br><br>
+            <input type="password" placeholder="Create login password" name="psw" required pattern=".{6,}" title="Password must have atleast 6 characters"><br><br>
             <input type="password" placeholder="Confirm password" name="cpsw" required><br><br>
             <div style="color: red; margin: 0; padding: 0; text-align: center; font-size: 12px;">
                 <?php
