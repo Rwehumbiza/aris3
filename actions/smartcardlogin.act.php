@@ -16,6 +16,9 @@
         if (password_verify($psw, $row['password'])) {
             session_start();
             $_SESSION['username'] = $row['username'];
+            if ($row['priviledge'] == 'admin') {
+                $_SESSION['admin'] = $row['priviledge'];
+            }
             header('location: ../smartcarddashboard.php');
         } else {
             header('location: ../smartcardlogin.php?error2');

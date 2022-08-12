@@ -20,7 +20,7 @@
             header("location: ../smartcardsignup.php?error&u=$username");
             exit();
         } else {
-            $sql = "INSERT INTO Smartcard VALUES ('$username', '". password_hash($psw, PASSWORD_DEFAULT) ."')";
+            $sql = "INSERT INTO Smartcard (username, password) VALUES ('$username', '". password_hash($psw, PASSWORD_DEFAULT) ."')";
             if (mysqli_query($conn, $sql)) {
                 header("location: ../smartcardlogin.php?success");
             } else {
