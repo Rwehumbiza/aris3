@@ -34,6 +34,9 @@
                     if (isset($_GET['error2'])) {
                         echo "Failed update!! Please try again...";
                     }
+                    if (isset($_GET['error3'])) {
+                        echo "No data submitted";
+                    }
                 ?>
             </div>
             <button name="submit">UPDATE</button>
