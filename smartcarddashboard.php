@@ -34,6 +34,7 @@
             </i>
             <tbody>
                 <tr>
+                    <th>Profile Image</th>
                     <th>Username</th>
                     <th>Password</th>
                     <th>Priviledge</th>
@@ -42,6 +43,9 @@
                 <?php
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<tr>';
+                        echo '<td>';
+                        echo '<img src="data:image;base64,'. base64_encode($row['profilepic']). '" alt="profileimage" style="width: 100px;">';
+                        echo '</td>';
                         echo '<td>';
                         echo $row['username'];
                         echo '</td>';

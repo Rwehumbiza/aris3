@@ -4,7 +4,7 @@
         $username = $_POST['username'];
         $psw = mysqli_real_escape_string($conn, stripcslashes($_POST['psw']));
         $cpsw = $_POST['cpsw'];
-
+        $profilepic = addslashes(file_get_contents($_FILES['profilepic']['tmp_name']));
         $username = stripcslashes($username);
 
         $username = mysqli_real_escape_string($conn, $username);
@@ -20,7 +20,7 @@
             header("location: ../smartcardsignup.php?error&u=$username");
             exit();
         } else {
-            $sql = "INSERT INTO Smartcard (username, password) VALUES ('$username', '". password_hash($psw, PASSWORD_DEFAULT) ."')";
+            $sql = "INSERT INTO Smartcard (username, password, profilepic) VALUES ('$username', '". password_hash($psw, PASSWORD_DEFAULT) ."', '$profilepic')";
             if (mysqli_query($conn, $sql)) {
                 header("location: ../smartcardlogin.php?success");
             } else {

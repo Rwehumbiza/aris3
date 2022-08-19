@@ -8,7 +8,7 @@
 </head>
 <body>
     <center>
-        <form action="actions/smartcardsignup.act.php" method="post">
+        <form action="actions/smartcardsignup.act.php" method="post" enctype="multipart/form-data">
             <input style="width: 13.5rem; height: 2rem; border-radius: 5px; " type="text" placeholder="Create a username for your account" name="username" value="<?php echo $_GET['u']; ?>" required><br><br>
             <div style="margin: 0; padding: 0; text-align: center; font-size: 12px;">
                 <?php
@@ -18,6 +18,7 @@
                     }
                 ?>
             </div>
+            <input style="width: 13.5rem; height: 2rem;"  type="file" placeholder="Select Profile Picture" name="profilepic" required><br><br>
             <input style="width: 13.5rem; height: 2rem;"  type="password" placeholder="Create login password" name="psw" required pattern=".{6,}" title="Password must have atleast 6 characters"><br><br>
             <input style="width: 13.5rem; height: 2rem;"  type="password" placeholder="Confirm password" name="cpsw" required><br><br>
             <div style="color: red; margin: 0; padding: 0; text-align: center; font-size: 12px;">

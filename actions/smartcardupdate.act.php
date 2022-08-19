@@ -27,7 +27,7 @@
                 header('location: ../smartcardupdate.php?error&error1');
                 break;
             default:
-                if (($username == "") && ($psw == "")) {
+                if (empty($username) && empty($psw)) {
                     header("location: ../smartcardupdate.php?error3");
                 }
                 if ($username) {
@@ -39,7 +39,7 @@
                 }
 
                 if ($psw) {
-                    $sqli = "UPDATE Smartcard SET password = '". password_hash($psw, PASSWORD_DEFAULT) ."' WHERE username = '". $_SESSION['staff'] ."'";
+                    $sqli = "INSERT INTO Smartcard (password) VALUES ('". password_hash($psw, PASSWORD_DEFAULT) ."') WHERE username = '". $_SESSION['staff'] ."'";
                     $resulti = mysqli_query($conn, $sqli);
                     if (!$resulti) {
                         header("location: ../smartcardupdate.php?error2");
